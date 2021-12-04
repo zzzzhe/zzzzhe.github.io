@@ -4,10 +4,17 @@
 			$('.spinner').fadeOut();
 			$('.preloader-area').delay(350).fadeOut('slow');
 		});
+
+		var logosrc = $('.brand');
+
 		$(window).on('scroll', function () {
 			if ($(window).scrollTop() > 120) {
+				var src = logosrc.attr("src").replace("logo.png", "logo_white.png");
+				logosrc.attr("src", src);
 				$('.navbar-fixed-top').addClass('sticky');
 			} else {
+				var src = logosrc.attr("src").replace("logo_white.png", "logo.png");
+				logosrc.attr("src", src);
 				$('.navbar-fixed-top').removeClass('sticky');
 			}
 		});
