@@ -1,7 +1,8 @@
 {
   "nav": {
     "home": "首页",
-    "about": "关于",
+    "product": "技术产品",
+    "about": "关于我们",
     "lang": "EN"
   }
 }
