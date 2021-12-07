@@ -414,6 +414,7 @@ nav.navbar.navbar-default.navbar-fixed-top {
 }
 
 .navbar-brand {
+	margin-top: 8px;
 	padding: 0 15px;
 	height: auto;
 }
