@@ -26,6 +26,12 @@
       thisForm.querySelector('.sent-message').classList.remove('d-block');
 
       let formData = new FormData( thisForm );
+      let object = {};
+      formData.forEach(function(value, key){
+		      object[key] = value;
+		      });
+      let jsonData = JSON.stringify(object);
+
 
       if ( recaptcha ) {
         if(typeof grecaptcha !== "undefined" ) {
@@ -44,16 +50,17 @@
           displayError(thisForm, 'The reCaptcha javascript API url is not loaded!')
         }
       } else {
-        php_email_form_submit(thisForm, action, formData);
+        php_email_form_submit(thisForm, action, jsonData);
       }
     });
   });
 
-  function php_email_form_submit(thisForm, action, formData) {
+  function php_email_form_submit(thisForm, action, jsonData) {
     fetch(action, {
       method: 'POST',
-      body: formData,
-      headers: {'X-Requested-With': 'XMLHttpRequest'}
+      body: jsonData,
+      //headers: {'X-Requested-With': 'XMLHttpRequest'}
+      headers: {'Content-Type': 'application/json; charset=utf-8'}
     })
     .then(response => {
       if( response.ok ) {
